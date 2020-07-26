@@ -41,7 +41,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         SizedBox(height: 20),
                         TextFormField(
                           autofocus: true,
-                          decoration: InputDecoration(hintText: "Name"),
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(hintText: "Name", hintStyle: TextStyle(color: Colors.white)),
                           validator: (val) => val.isEmpty ? 'Enter a name' : null,
                           onChanged: (val) {
                             setState(() {
@@ -52,7 +53,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         SizedBox(height: 20),
                         TextFormField(
                           keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(hintText: "Email"),
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(hintText: "Email", hintStyle: TextStyle(color: Colors.white)),
                           validator: (val) {
                             if (val.isEmpty) {
                               return 'Enter an email';
@@ -68,8 +70,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         SizedBox(height: 20),
                         TextFormField(
+                          style: TextStyle(color: Colors.white),
                           obscureText: true,
-                          decoration: InputDecoration(hintText: "Password"),
+                          decoration: InputDecoration(hintText: "Password", hintStyle: TextStyle(color: Colors.white)),
                           validator: (val) => val.length < 6 ? 'Password should be longer than 6 characters' : null,
                           onChanged: (val) {
                             _password = val;
@@ -112,7 +115,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: _deviceHeight * 0.06,
                           child: FlatButton(
                               color: Colors.transparent,
-                              child: Text("Sign In"),
+                              child: Text("Sign In", style: TextStyle(color: Colors.white)),
                               onPressed: () {
                                 widget.toggleView();
                               }),
