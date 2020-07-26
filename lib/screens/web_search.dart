@@ -128,13 +128,14 @@ class _WebSearchState extends State<WebSearch> {
       appBar: AppBar(
         backgroundColor: Color(0xFF0A0E21),
         actions: [
-          IconButton(
+          isSearch == true
+              ? IconButton(
             onPressed: () {
               //TODO: Save this link
               dbService.addLinkThroughWebview(user.uid, widget.searchParam, widget.currentUrl);
             },
             icon: Icon(Icons.add),
-          )
+          ) : Container()
         ],
       ),
       key: scaffoldKey,
