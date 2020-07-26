@@ -12,12 +12,17 @@ class AddCategories {
     print(links);
     if(!links.contains(url)) {
 
-        links.add(url);
+      links.add(url);
 
-        FirestoreService.instance.updateData(docPath: path, data: {'name':cat,'Links':links});
-      }
+      FirestoreService.instance.updateData(docPath: path, data: {'name':cat,'Links':links});
+    }
 
 
+  }
+  static addCategory(String cat){
+    String path = 'Users/vQ8CMAJZo4at0MmZKhFaGLPRwo93/Categories/$cat';
+    List links =['https://www.google.com/search?q=$cat'];
+    FirestoreService.instance.updateData(docPath: path, data: {'name':cat,'Links':links});
   }
 
   static Future <List<String>> getCategories() async{
