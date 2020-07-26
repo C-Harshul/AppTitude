@@ -55,14 +55,20 @@ class DBService {
     String name = '';
     var _ref = _db.collection(_usersCollection).document(_userID).collection(_categoriesCollection).document(
         _categoryName);
-    int f=0;
-    for(int i = 0;i<_link.toString().length;++i){
-      if(f==1 && _link[i] != '.')
-        name = name + _link[i];
-      if(_link[i] == '.'){
-        f++;
-        if(f==2)
-          break;
+    if(_link.contains('flutter'))
+      name = 'flutter';
+    else if (_link.contains('wikipedia'))
+      name = 'wikipedia';
+    else{
+      int f=0;
+      for(int i = 0;i<_link.toString().length;++i){
+        if(f==1 && _link[i] != '.')
+          name = name + _link[i];
+        if(_link[i] == '.'){
+          f++;
+          if(f==2)
+            break;
+        }
       }
     }
     var data = [{"link": _link, "name": name}];
