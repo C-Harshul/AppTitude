@@ -34,7 +34,7 @@ TextEditingController ctrl = TextEditingController();
               FlatButton(
                 child: Text('Yes',style: TextStyle(color: Colors.white)),
                 onPressed: () async{
-                 await AddCategories.updateCategoryData(ctrl.text);
+                 await AddCategories.updateCategoryData(ctrl.text,'');
                  await AddCategories.addToCategoryField(ctrl.text);
                  Navigator.of(context).pop();
                 },
