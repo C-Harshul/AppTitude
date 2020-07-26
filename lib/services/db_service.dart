@@ -21,7 +21,6 @@ class DBService {
           .collection(_categoriesCollection)
           .document(_flutterDocument)
           .setData({
-        "name": _flutterDocument,
         "Links": [
           {"link": _defaultLink, "name": _defaultLinkName}
         ]
@@ -33,5 +32,24 @@ class DBService {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future addCategory(String _userID, String _categoryName) async {
+    var _ref = _db.collection(_usersCollection).document(_userID).collection(_categoriesCollection);
+    return _ref.document(_categoryName).setData({"name" : "", "Links" : []});
+  }
+
+  Future deleteCategory(String _userID, String _categoryName) async {
+    try {
+      var _ref = _db.collection(_usersCollection).document(_userID).collection(_categoriesCollection);
+      return _ref.document(_categoryName).delete();
+    }catch(e){
+      print(e);
+    }
+  }
+
+  Stream getUserCategories(String _userID) {
+    var _ref = _db.collection(_usersCollection).document(_userID).collection(_categoriesCollection);
+    return _ref.snapshots();
   }
 }
