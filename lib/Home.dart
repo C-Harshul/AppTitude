@@ -1,6 +1,9 @@
+import 'package:apptitude/web_page.dart';
 import 'package:flutter/material.dart';
 import 'Firebase/add_category.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -98,6 +101,9 @@ class CategoryStream extends StatelessWidget {
   }
 }
 
+webSearch(BuildContext context){
+  Navigator.pushNamed(context, '/Websearch');
+}
 
 class CategoryTile extends StatelessWidget {
   CategoryTile({this.title});
@@ -110,13 +116,27 @@ class CategoryTile extends StatelessWidget {
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Card(
-          color: Color(0xFF1D1E33),
-          child: Center(child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(title,style: TextStyle(fontSize: 50,color: Colors.white)),
-           )
+        child: Slidable(
+          actionPane: SlidableDrawerActionPane(),
+          actionExtentRatio: 0.25,
+          child: Card(
+            color: Color(0xFF1D1E33),
+            child: Center(child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(title,style: TextStyle(fontSize: 50,color: Colors.white)),
+             )
+            ),
           ),
+          actions: [
+            IconSlideAction(
+              caption: 'Search',
+              color: Color(0xFFEB1555),
+              icon: Icons.web,
+              onTap:() {
+                 Navigator.pushNamed(context, '/Websearch',arguments: {'param':title});
+              }
+            ),
+          ],
         ),
       ),
     );
