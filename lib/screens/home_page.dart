@@ -6,6 +6,7 @@ import 'link_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'web_search.dart';
+import 'slide_left.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -111,7 +112,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Links Organizer"),
+        title: Text("MarkInt"),
         actions: <Widget>[
           Padding(
             padding: EdgeInsets.only(right: 20),
@@ -196,8 +197,8 @@ class CategoryStream extends StatelessWidget {
                       }
                       return res;
                     } else {
-                      Navigator.push(
-                          context, MaterialPageRoute(builder: (context) => WebSearch(searchParam: _categoryTitle)));
+                      Navigator.push(context,
+                          SlideRightRoute(page: WebSearch(searchParam: _categoryTitle, user: user)));
                       return false;
                     }
                   },
@@ -221,19 +222,26 @@ class CategoryTile extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (context) => LinkPage(),
+          SlideLeftRoute(
+            page: LinkPage(
+              categoryName: title,
+              user: user,
+            ),
           )),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Card(
-          color: Colors.black,
+        padding: const EdgeInsets.all(30),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color(0xFF1D1E33),
+            borderRadius: BorderRadius.circular(3),
+          ),
+
           child: Center(
               child: Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
               title,
-              style: TextStyle(fontSize: 50, color: Colors.white),
+              style: TextStyle(fontSize: 40, color: Colors.white),
             ),
           )),
         ),

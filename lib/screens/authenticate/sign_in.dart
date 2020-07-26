@@ -42,7 +42,8 @@ class _SignInPageState extends State<SignInPage> {
                           TextFormField(
                             autofocus: true,
                             keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(hintText: "Email"),
+                            style: TextStyle(color: Colors.white),
+                            decoration: InputDecoration(hintText: "Email", hintStyle: TextStyle(color: Colors.white)),
                             validator: (val) => val.isEmpty ? 'Enter an email' : null,
                             onChanged: (val) {
                               setState(() {
@@ -53,7 +54,8 @@ class _SignInPageState extends State<SignInPage> {
                           SizedBox(height: 30),
                           TextFormField(
                             obscureText: true,
-                            decoration: InputDecoration(hintText: "Password"),
+                            style: TextStyle(color: Colors.white),
+                            decoration: InputDecoration(hintText: "Password", hintStyle: TextStyle(color: Colors.white)),
                             validator: (val) => val.length < 6 ? 'Password should be longer than 6 characters' : null,
                             onChanged: (val) {
                               _password = val;
@@ -95,7 +97,7 @@ class _SignInPageState extends State<SignInPage> {
                             height: _deviceHeight * 0.06,
                             child: FlatButton(
                                 color: Colors.transparent,
-                                child: Text("Register"),
+                                child: Text("Register", style: TextStyle(color: Colors.white)),
                                 onPressed: () async {
                                   widget.toggleView();
                                 }),

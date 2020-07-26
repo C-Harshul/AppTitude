@@ -18,6 +18,12 @@ class MyApp extends StatelessWidget {
           return Wrapper();
         },
       ),
+      theme: ThemeData(
+        textTheme: TextTheme(),
+        scaffoldBackgroundColor: Color(0xFF000a12),
+        primaryColor: Color(0xFFEB1555),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Color(0xFFEB1555))
+      ),
     );
   }
 }
